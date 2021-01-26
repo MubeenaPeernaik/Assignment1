@@ -17,36 +17,36 @@ export class EmployeeDetailsComponent implements OnInit {
   departmentsArr: any = [];
   sortByArr: any = ["name(a-z)","name(z-a)", "age","email"];
   employeeList : any;
-  employeeList1: any;
+  employeeArr: any;
 
   constructor() { 
     let employees = [
       {
-        name: "Lalat",
+        name: "Employee One",
         age: 40,
         email: "one@gmail.com",
         departments: ["Computer", "Physics"],
       },
       {
-        name: "mubeen",
+        name: "Employee Two",
         age: 10,
         email: "Two@gmail.com",
         departments: ["Computer"],
       },
       {
-        name: "Lucky",
+        name: "Employee Three",
         age: 10,
         email: "Three@gmail.com",
         departments: ["Physics", "Chemistry"],
       },
       {
-        name: "Ashu",
+        name: "Employee Four",
         age: 60,
         email: "Four@gmail.com",
         departments: ["Chemistry", "Physics"],
       },
       {
-        name: "Bikash",
+        name: "Employee Five",
         age: 70,
         email: "Five@gmail.com",
         departments: ["Computer", "Physics", "Chemistry"],
@@ -66,7 +66,7 @@ export class EmployeeDetailsComponent implements OnInit {
              this.departmentsArr.push(dept);
       });
     });
-    this.employeeList1 = employees;
+    this.employeeArr = employees;
     
   }
 
@@ -76,13 +76,13 @@ export class EmployeeDetailsComponent implements OnInit {
 
   sortBy(sortBy: string){
     if(sortBy == 'name(a-z)'){
-      this.employeeList1.sort((e1: any,e2: any) => e1.name > e2.name ? 1 : -1);
+      this.employeeArr.sort((e1: any,e2: any) => e1.name > e2.name ? 1 : -1);
     }else if (sortBy == 'name(z-a)'){
-      this.employeeList1.sort((e1: any,e2: any) => e1.name > e2.name ? -1 : 1);
+      this.employeeArr.sort((e1: any,e2: any) => e1.name > e2.name ? -1 : 1);
     }else if(sortBy=='age'){
-      this.employeeList1.sort((e1: any,e2: any) => e1.age > e2.age ? 1 : -1);
+      this.employeeArr.sort((e1: any,e2: any) => e1.age > e2.age ? 1 : -1);
     }else if(sortBy=='email'){
-      this.employeeList1.sort((e1: any,e2: any) => e1.email > e2.email ? 1 : -1);
+      this.employeeArr.sort((e1: any,e2: any) => e1.email > e2.email ? 1 : -1);
     }
   }
 
@@ -93,22 +93,22 @@ export class EmployeeDetailsComponent implements OnInit {
       sortBy: "name(a-z)"
   
     }
-    this.employeeList1 = this.employeeList;
+    this.employeeArr = this.employeeList;
     this.sortBy('name(a-z)');
   }
 
   searchData(): void {
     if(this.searchBy.department && this.searchBy.nameOrEmail) {
-      this.employeeList1 = this.employeeList.filter((emp: any) =>
+      this.employeeArr = this.employeeList.filter((emp: any) =>
       emp.departments.includes(this.searchBy.department)
        && (emp.name ==this.searchBy.nameOrEmail || emp.email == this.searchBy.nameOrEmail));
     }else {
       if(this.searchBy.department) {
-        this.employeeList1 = this.employeeList.filter((emp: any) =>
+        this.employeeArr = this.employeeList.filter((emp: any) =>
          emp.departments.includes(this.searchBy.department));
       }
       if(this.searchBy.nameOrEmail) {
-        this.employeeList1 = this.employeeList.filter((emp: any) =>
+        this.employeeArr = this.employeeList.filter((emp: any) =>
          emp.name ==this.searchBy.nameOrEmail || emp.email == this.searchBy.nameOrEmail );
       }
     }
